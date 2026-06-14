@@ -1,0 +1,10 @@
+# Python / PyInstaller 构建产物（Windows 专用，iPad 无需，体积大）
+build/
+dist/
+__pycache__/
+*.pyc
+*.spec
+
+# 系统文件
+Thumbs.db
+.DS_Store

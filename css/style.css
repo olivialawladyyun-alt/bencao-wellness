@@ -1,0 +1,358 @@
+/* =========================================================================
+ *  本草养身 · 样式表  —— 中式典雅 / 草木色调
+ * ========================================================================= */
+:root{
+  --bg:#f6f1e7;            /* 宣纸底 */
+  --bg2:#efe7d6;
+  --card:#fffdf8;
+  --ink:#3a352c;          /* 墨色 */
+  --ink-soft:#6b6457;
+  --line:#d9cfb8;
+  --accent:#6a7c52;       /* 草木绿 */
+  --accent-d:#52643d;
+  --gold:#b08a3e;         /* 沉金 */
+  --rust:#a8584a;         /* 朱砂 */
+  --shadow:0 6px 24px rgba(80,66,40,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Noto Serif SC","Songti SC",STSong,"SimSun",serif;
+  background:radial-gradient(circle at 50% -10%,#fbf7ee,var(--bg)) fixed;
+  color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;
+  min-height:100vh;padding:0 0 60px;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+
+/* 顶栏 */
+header.topbar{
+  text-align:center;padding:34px 20px 22px;
+  border-bottom:1px solid var(--line);margin-bottom:8px;
+}
+.brand{font-size:30px;letter-spacing:6px;color:var(--accent-d);font-weight:700}
+.brand .seal{color:var(--rust);font-size:24px;margin:0 4px}
+.subtitle{color:var(--ink-soft);font-size:14px;letter-spacing:3px;margin-top:6px}
+.nav{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.nav button{
+  background:transparent;border:1px solid var(--line);color:var(--ink-soft);
+  padding:6px 16px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:13px;
+  transition:.2s;
+}
+.nav button:hover{border-color:var(--accent);color:var(--accent-d);background:#fff}
+
+/* 视图 */
+.view{display:none;animation:fade .4s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* 卡片通用 */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);padding:28px;margin:18px 0}
+
+/* ---------- 首页 ---------- */
+.hero{text-align:center;padding:30px 24px}
+.hero .ornament{font-size:40px;color:var(--gold);margin-bottom:6px}
+.hero h1{font-size:24px;letter-spacing:3px;margin-bottom:14px;color:var(--accent-d)}
+.hero p{color:var(--ink-soft);max-width:600px;margin:0 auto 10px}
+.flow{display:flex;justify-content:center;gap:0;margin:26px 0;flex-wrap:wrap}
+.flow .step{flex:1;min-width:120px;padding:14px}
+.flow .step .ic{font-size:30px}
+.flow .step h4{color:var(--accent-d);letter-spacing:2px;margin:6px 0 4px}
+.flow .step p{font-size:13px}
+.flow .arrow{align-self:center;color:var(--gold);font-size:22px;padding:0 4px}
+.cta{margin-top:18px}
+.btn{
+  background:var(--accent);color:#fff;border:none;padding:13px 38px;border-radius:26px;
+  font-family:inherit;font-size:17px;letter-spacing:3px;cursor:pointer;box-shadow:var(--shadow);
+  transition:.2s;
+}
+.btn:hover{background:var(--accent-d);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--accent-d);border:1px solid var(--accent)}
+.btn.ghost:hover{background:#fff}
+
+.disclaimer{
+  background:#fbf3e4;border:1px solid #e7d4a8;border-radius:10px;
+  padding:14px 18px;margin:20px 0;font-size:13px;color:#7a6326;line-height:1.7
+}
+.disclaimer b{color:var(--rust)}
+
+/* ---------- 问诊 ---------- */
+.consult-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.consult-head h2{font-size:20px;letter-spacing:2px;color:var(--accent-d)}
+.progress{height:8px;background:var(--bg2);border-radius:6px;overflow:hidden;margin:14px 0 4px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));
+  width:0;transition:width .3s}
+.progress-text{font-size:12px;color:var(--ink-soft);text-align:right}
+
+.question{padding:18px 0;border-bottom:1px dashed var(--line)}
+.question.unanswered{background:#fceeed;animation:shake .4s}
+.question.unanswered .q-text{color:var(--rust)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.q-text{font-size:16px;margin-bottom:10px}
+.q-num{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;
+  background:var(--accent);color:#fff;border-radius:50%;font-size:13px;margin-right:8px}
+.q-tag{font-size:11px;color:var(--gold);border:1px solid #e3d4ac;border-radius:10px;
+  padding:1px 8px;margin-left:8px;vertical-align:middle}
+.q-options{display:flex;gap:8px;flex-wrap:wrap}
+.opt{flex:1;min-width:96px;background:#fff;border:1px solid var(--line);border-radius:10px;
+  padding:8px 6px;cursor:pointer;font-family:inherit;text-align:center;transition:.15s}
+.opt:hover{border-color:var(--accent);background:#f7f9f2}
+.opt.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+.opt-v{display:block;font-size:17px;font-weight:700}
+.opt-l{display:block;font-size:11px;color:inherit;opacity:.85}
+
+.consult-foot{display:flex;justify-content:space-between;margin-top:18px;gap:10px}
+.consult-foot button{padding:11px 26px;border-radius:22px;border:1px solid var(--accent);
+  background:#fff;color:var(--accent-d);font-family:inherit;font-size:15px;cursor:pointer;transition:.2s}
+.consult-foot button:hover:not(:disabled){background:var(--accent);color:#fff}
+.consult-foot button:disabled{opacity:.35;cursor:not-allowed}
+.consult-foot button.primary-strong{background:var(--gold);border-color:var(--gold);color:#fff}
+.consult-foot button.primary-strong:hover{background:#977330}
+
+/* ---------- 断诊 ---------- */
+.verdict-main{border-left:6px solid var(--vc,var(--accent));background:#fff;
+  border-radius:10px;padding:20px 24px;margin-bottom:8px}
+.verdict-main.pinghe{--vc:#6ea96b}
+.vm-title{font-size:26px;letter-spacing:3px;color:var(--vc,var(--accent-d));font-weight:700}
+.vm-badge{font-size:13px;background:var(--vc);color:#fff;padding:2px 12px;border-radius:12px;
+  margin-left:12px;vertical-align:middle;letter-spacing:1px}
+.vm-sub{color:var(--gold);font-size:14px;margin:4px 0 10px;letter-spacing:1px}
+.vm-desc{color:var(--ink-soft);font-size:14px}
+
+.diag-grid{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.radar{width:340px;max-width:100%;margin:0 auto;display:block}
+.radar-grid{fill:none;stroke:var(--line)}
+.radar-axis{stroke:#e4dac4}
+.radar-label{font-size:12px;fill:var(--ink-soft);font-family:inherit}
+.radar-data{fill:rgba(106,124,82,.28);stroke:var(--accent);stroke-width:2}
+.radar-dot{fill:var(--accent-d)}
+
+.score-bars{flex:1;min-width:280px}
+.score-row{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:13px}
+.sr-name{width:48px;color:var(--ink);flex-shrink:0}
+.sr-bar{flex:1;height:12px;background:var(--bg2);border-radius:6px;overflow:hidden}
+.sr-fill{height:100%;border-radius:6px;transition:width .6s}
+.sr-val{width:28px;text-align:right;color:var(--ink-soft)}
+.sr-verdict{width:48px;text-align:center;font-size:11px;border-radius:8px;padding:1px 0;flex-shrink:0}
+.v-yes{background:#e7efdd;color:var(--accent-d)}
+.v-mid{background:#fbf0d6;color:var(--gold)}
+.v-no{background:#f0ece2;color:#aaa}
+
+.section-title{font-size:15px;color:var(--accent-d);letter-spacing:2px;margin:22px 0 6px;
+  border-left:4px solid var(--gold);padding-left:10px}
+.center-cta{text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- 出诊 ---------- */
+.rx-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.rx-tab{background:#fff;border:1px solid var(--line);border-bottom:3px solid transparent;
+  padding:8px 20px;border-radius:10px 10px 0 0;cursor:pointer;font-family:inherit;font-size:15px;
+  color:var(--ink-soft);transition:.2s}
+.rx-tab.active{border-bottom-color:var(--vc);color:var(--vc);font-weight:700;background:var(--card)}
+.rx-head{border-left:6px solid var(--vc);padding:14px 18px;background:#fff;border-radius:8px;margin-bottom:14px}
+.rxh-name{font-size:20px;color:var(--vc);letter-spacing:2px;font-weight:700;margin-bottom:6px}
+.rxh-principle{font-size:14px;color:var(--ink-soft)}
+.rx-section{margin:20px 0}
+.rx-section h3{font-size:16px;color:var(--accent-d);letter-spacing:2px;
+  border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:12px}
+.rx-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rx-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.rxc-name{font-size:15px;color:var(--accent-d);font-weight:700;margin-bottom:4px}
+.rxc-items{font-size:13px;color:var(--gold);background:#faf4e6;border-radius:6px;
+  padding:5px 10px;margin:6px 0;display:inline-block}
+.rxc-effect,.rxc-usage{font-size:13px;color:var(--ink-soft);margin-top:4px}
+.rx-diet p,.rx-regimen p{font-size:14px;margin:8px 0;color:var(--ink-soft)}
+.rx-diet b.good{color:var(--accent-d)}
+.rx-diet b.avoid{color:var(--rust)}
+.rx-disclaim{background:#fbf3e4;border:1px solid #e7d4a8;border-radius:10px;
+  padding:14px 18px;font-size:13px;color:#7a6326;margin-top:20px;line-height:1.8}
+.rx-disclaim b{color:var(--rust)}
+
+/* ---------- 本草库 ---------- */
+.herb-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.herb-search{flex:1;min-width:180px;padding:9px 14px;border:1px solid var(--line);
+  border-radius:20px;font-family:inherit;font-size:14px;background:#fff}
+.herb-search:focus{outline:none;border-color:var(--accent)}
+.herb-cats{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.hcat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:4px 14px;
+  font-family:inherit;font-size:13px;color:var(--ink-soft);cursor:pointer;transition:.2s}
+.hcat:hover{border-color:var(--accent)}
+.hcat.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.herb-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.herb-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.hc-top{display:flex;align-items:baseline;gap:8px}
+.hc-name{font-size:19px;color:var(--accent-d);font-weight:700;letter-spacing:1px}
+.hc-alias{font-size:12px;color:var(--ink-soft)}
+.hc-meta{display:flex;gap:10px;margin:4px 0 8px;font-size:12px}
+.hc-nature{color:var(--rust);background:#fbeeec;border-radius:6px;padding:1px 8px}
+.hc-mer{color:var(--gold);background:#faf4e6;border-radius:6px;padding:1px 8px}
+.hc-row{font-size:13px;color:var(--ink-soft);margin:5px 0}
+.hc-row b{color:var(--ink);margin-right:6px;font-size:12px;background:var(--bg2);
+  border-radius:4px;padding:0 6px}
+.hc-row.caution b{background:#fbeeec;color:var(--rust)}
+.hc-tags{margin-top:8px;display:flex;gap:5px;flex-wrap:wrap}
+.hc-tags span{font-size:11px;color:var(--accent-d);border:1px solid #dbe3cd;border-radius:8px;padding:0 7px}
+.empty{text-align:center;color:var(--ink-soft);padding:30px}
+
+/* ---------- 经络穴位图（解剖版）---------- */
+:root{
+  --skin:#f1dcc2;        /* 肌肤底色（真人浅肤色）*/
+  --skin-d:#cf9c72;      /* 轮廓线 */
+  --mline:#cf9c72;       /* 定义线 */
+  --bone:#f4ecd6;        /* 骨骼 */
+  --bone-l:#b59a6a;      /* 骨骼线 */
+  --pin:#c0392b;         /* 穴位标记（参考图红点）*/
+}
+.inline-link{background:none;border:none;color:var(--accent);font-family:inherit;
+  font-size:13px;cursor:pointer;padding:0 2px;text-decoration:underline;text-underline-offset:3px}
+.inline-link:hover{color:var(--accent-d)}
+/* 模式切换 */
+.acu-mode{display:flex;gap:10px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:2px}
+.acu-modebtn{background:transparent;border:none;border-bottom:3px solid transparent;
+  padding:8px 14px;font-family:inherit;font-size:15px;color:var(--ink-soft);cursor:pointer;transition:.2s}
+.acu-modebtn:hover{color:var(--accent-d)}
+.acu-modebtn.on{color:var(--accent-d);border-bottom-color:var(--gold);font-weight:700}
+/* 全身总览海报 */
+.poster-hint{font-size:13px;color:var(--ink-soft);text-align:center;margin-bottom:6px}
+.poster-svg{width:100%;max-width:760px;display:block;margin:0 auto;
+  background:radial-gradient(ellipse at 50% 30%,#fffdf8,#f2ebda);border:1px solid var(--line);border-radius:14px}
+.poster-fig .an-skin{fill:#ecd8c2;stroke:#d8bda2}
+.poster-fig .mline,.poster-fig .an-out{opacity:.4}
+.poster-fig .an-spine,.poster-fig .an-vert{display:none}
+.poster-fig .fig-tag{display:none}
+.poster-fig .an-eye{fill:#9a7a5e}
+.pz-dot{fill:#c0392b;stroke:#fff;stroke-width:.8}
+.pz-lead{fill:none;stroke:#c9b48a;stroke-width:1}
+.pz-pill{fill:#fffdf8;stroke:var(--mline);stroke-width:1.2}
+.pz-name{fill:#5a3d2b;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:1px}
+.pz-ind{fill:var(--ink-soft);font-family:inherit;font-size:12.5px}
+.pz-hit{fill:transparent;cursor:pointer}
+.pz-hit:hover{fill:rgba(176,138,62,.12)}
+.acu-symptoms{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.acu-sym{background:#fff;border:1px solid var(--line);border-radius:16px;padding:5px 14px;
+  font-family:inherit;font-size:13px;color:var(--ink-soft);cursor:pointer;transition:.2s}
+.acu-sym:hover{border-color:var(--accent)}
+.acu-sym.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.acu-layout{display:flex;gap:22px;flex-wrap:wrap}
+.acu-left{flex:0 0 300px;max-width:100%}
+.acu-right{flex:1;min-width:280px}
+.body-svg{width:300px;max-width:100%;display:block;margin:0 auto;
+  background:radial-gradient(ellipse at 50% 34%,#fffdf8,#f1ead9);border:1px solid var(--line);border-radius:14px}
+
+/* 身体（真人风格）*/
+.figure .an-skin{fill:var(--skin);stroke:var(--skin-d);stroke-width:1.4;stroke-linejoin:round}
+.figure .an-line{fill:none;stroke:var(--mline);stroke-width:1;stroke-linecap:round;opacity:.5}
+.figure .mline{fill:none;stroke:var(--mline);stroke-width:1;stroke-linecap:round;opacity:.45}
+.figure .an-out{fill:none;stroke:var(--mline);stroke-width:1;opacity:.45}
+.figure .an-dot{fill:var(--mline);opacity:.55}
+.figure .an-eye{fill:#6b4a35}
+/* 脊柱（背面常显） */
+.figure .an-spine{stroke:var(--bone-l);stroke-width:2}
+.figure .an-vert rect{fill:var(--bone);stroke:var(--bone-l);stroke-width:.8}
+/* 骨骼层：开启时淡化肌肉、显出骨骼 */
+.figure.show-bones .an-body .an-skin{opacity:.34}
+.figure.show-bones .an-musc{opacity:.22}
+.figure .an-bone *{fill:none;stroke:var(--bone-l);stroke-width:1.4;stroke-linejoin:round}
+.figure .an-bone ellipse,.figure .an-bone circle,.figure .an-bone rect,
+.figure .an-bone path.bfill{fill:var(--bone);fill-opacity:.5}
+.figure .an-bone .an-vtext{fill:var(--accent-d);stroke:none;font-size:10px;font-family:inherit;font-weight:700}
+.figure .an-bone .an-lead{stroke:var(--bone-l);stroke-width:.8}
+.figure .fig-tag{fill:var(--ink-soft);font-size:12px;font-family:inherit;letter-spacing:2px}
+
+/* 穴位标记 */
+.marker{cursor:pointer}
+.marker .m-dot{fill:var(--pin);stroke:#fff;stroke-width:1.6}
+.marker .m-halo{fill:#e8b84b;opacity:.22;animation:halo 1.8s ease-in-out infinite}
+@keyframes halo{0%,100%{opacity:.14;r:9}50%{opacity:.36}}
+.marker .m-label{fill:var(--ink);font-size:11.5px;font-family:inherit;font-weight:700;
+  paint-order:stroke;stroke:#fffdf8;stroke-width:3px;stroke-linejoin:round}
+.acu-viewbar{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.acu-viewbar button{background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:4px 16px;font-family:inherit;font-size:13px;color:var(--ink-soft);cursor:pointer}
+.acu-viewbar button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.acu-viewbar button.bone-btn.on{background:var(--bone-l);border-color:var(--bone-l)}
+.acu-other{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:8px;line-height:1.6}
+.acu-other a{color:var(--accent);cursor:pointer;text-decoration:underline}
+.acu-tip{background:#f1f4ea;border-left:4px solid var(--accent);border-radius:8px;
+  padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px}
+.acu-tip b{color:var(--accent-d)}
+.acu-back{color:var(--accent);cursor:pointer;font-size:13px;margin-bottom:10px}
+.acu-cards{display:flex;flex-direction:column;gap:10px}
+.acu-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+  cursor:pointer;transition:.2s;border-left:4px solid transparent}
+.acu-card:hover{border-color:var(--accent);border-left-color:var(--accent)}
+.acu-card.active{border-left-color:var(--rust)}
+.ac-top{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;flex-wrap:wrap}
+.ac-name{font-size:17px;color:var(--accent-d);font-weight:700;letter-spacing:1px}
+.ac-code{font-size:11px;color:var(--gold)}
+.ac-view{font-size:10px;color:var(--ink-soft);border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-left:auto}
+.ac-row{font-size:13px;color:var(--ink-soft);margin:3px 0}
+.ac-row b{color:var(--ink);font-size:11px;background:var(--bg2);border-radius:4px;padding:0 6px;margin-right:6px}
+.ac-row.caution b{background:#fbeeec;color:var(--rust)}
+.acu-disclaim{background:#fbf3e4;border:1px solid #e7d4a8;border-radius:8px;
+  padding:10px 14px;font-size:12px;color:#7a6326;margin-top:12px;line-height:1.7}
+.acu-disclaim b{color:var(--rust)}
+@media(max-width:680px){.acu-left{flex:1 1 100%}}
+
+/* ---------- 打印 ---------- */
+@media print{
+  body{background:#fff}
+  header.topbar .nav,.no-print,footer{display:none!important}
+  .view{display:none!important}
+  .view#view-prescribe{display:block!important}
+  .panel{box-shadow:none;border:none;padding:0}
+  .rx-card,.rx-head{break-inside:avoid}
+  .rx-tabs{display:none}
+}
+
+/* ---------- 首页当令养生卡片 ---------- */
+.home-jq{display:flex;gap:18px;flex-wrap:wrap;align-items:center;background:var(--card);
+  border:1px solid var(--line);border-left:6px solid var(--sc);border-radius:14px;
+  box-shadow:var(--shadow);padding:18px 24px;margin:18px 0;cursor:pointer;transition:.2s}
+.home-jq:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(80,66,40,.14)}
+.hjq-left{text-align:center;flex-shrink:0;min-width:96px}
+.hjq-tag{font-size:11px;letter-spacing:3px;color:var(--sc)}
+.hjq-name{font-size:30px;font-weight:700;color:var(--sc);letter-spacing:2px;line-height:1.2}
+.hjq-phen{font-size:12px;color:var(--ink-soft)}
+.hjq-right{flex:1;min-width:200px}
+.hjq-focus{font-size:14px;color:var(--ink)}
+.hjq-next{font-size:12px;color:var(--gold);margin-top:8px}
+
+/* ---------- 二十四节气页 ---------- */
+.jq-season{display:flex;align-items:center;gap:10px;margin:8px 0}
+.jqs-label{flex-shrink:0;width:26px;height:26px;line-height:26px;text-align:center;border-radius:8px;
+  background:var(--sc);color:#fff;font-weight:700}
+.jqs-chips{display:flex;gap:6px;flex-wrap:wrap}
+.jq-chip{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:5px 14px;font-family:inherit;font-size:13px;color:var(--ink-soft);cursor:pointer;transition:.2s}
+.jq-chip:hover{border-color:var(--sc)}
+.jq-chip.active{background:var(--sc);color:#fff;border-color:var(--sc)}
+.jq-chip.now{border-color:var(--sc);font-weight:700;color:var(--sc)}
+.jq-chip.now.active{color:#fff}
+.jq-nowtag{position:absolute;top:-7px;right:-5px;background:var(--rust);color:#fff;font-size:10px;
+  border-radius:8px;padding:0 4px;line-height:15px}
+.jieqi-detail{margin-top:18px}
+.jq-head{border-left:5px solid var(--sc);background:#fff;border-radius:10px;padding:14px 18px;margin-bottom:12px}
+.jqh-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.jqh-name{font-size:30px;font-weight:700;color:var(--sc);letter-spacing:3px}
+.jqh-date{font-size:13px;color:var(--ink-soft)}
+.jqh-now{font-size:12px;background:var(--sc);color:#fff;border-radius:10px;padding:2px 10px}
+.jqh-phen{font-size:14px;color:var(--gold);margin-top:6px}
+.jq-focus{background:#fbfaf5;border:1px dashed var(--line);border-radius:8px;padding:10px 14px;
+  font-size:14px;color:var(--ink);margin-bottom:12px}
+.jq-focus b{color:var(--sc);margin-right:8px}
+.jq-rows{display:flex;flex-direction:column;gap:8px}
+.jq-row{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+  border-radius:8px;padding:10px 14px;font-size:14px;color:var(--ink-soft)}
+.jq-row b{color:var(--ink);margin-right:8px;font-size:12px;background:var(--bg2);border-radius:4px;padding:0 7px}
+.jq-row.avoid b{background:#fbeeec;color:var(--rust)}
+.jqr-ic{flex-shrink:0;font-size:16px;line-height:1.4}
+@media(max-width:680px){.hjq-left{min-width:auto;text-align:left}}
+
+footer{text-align:center;color:var(--ink-soft);font-size:12px;margin-top:30px;letter-spacing:1px}
+
+/* 响应式 */
+@media(max-width:680px){
+  .rx-cards,.herb-list{grid-template-columns:1fr}
+  .flow .arrow{display:none}
+  .brand{font-size:24px}
+  .panel{padding:20px 16px}
+}

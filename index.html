@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>本草养身 · 中药熏香调理</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- PWA / iPad 主屏幕 -->
+<meta name="theme-color" content="#6a7c52">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="本草养身">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">本草<span class="seal">·</span>养身</div>
+  <div class="subtitle">辨 体 施 养 　 问 诊 · 断 诊 · 出 诊</div>
+  <nav class="nav">
+    <button onclick="showView('view-home')">首页</button>
+    <button onclick="startConsult()">开始问诊</button>
+    <button onclick="openAcu()">经络穴位图</button>
+    <button onclick="openJieqi()">二十四节气</button>
+    <button onclick="openHerbs()">本草·香材库</button>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ 首页 ============ -->
+  <section id="view-home" class="view active">
+    <div class="panel hero">
+      <div class="ornament">❀ ❀ ❀</div>
+      <h1>以体质为本，循草木之性而养身</h1>
+      <p>本程序依据中华中医药学会《中医体质分类与判定》标准，通过 <b id="total-q">66</b> 道问诊题，
+         辨识您在九种体质中的偏向，并从本草茶饮、熏香芳疗、食疗药膳、起居经络四个方面，给出温和的养身参考。</p>
+
+      <div class="flow">
+        <div class="step"><div class="ic">📝</div><h4>问诊</h4><p>体质问卷采集，逐项作答</p></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="ic">⚖</div><h4>断诊</h4><p>标准算法计分，辨明体质</p></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="ic">🌿</div><h4>出诊</h4><p>四类养身建议，仅供参考</p></div>
+      </div>
+
+      <div class="cta">
+        <button class="btn" onclick="startConsult()">开始问诊 →</button>
+      </div>
+    </div>
+
+    <div id="home-jieqi"></div>
+
+    <div class="disclaimer">
+      ⚠ <b>重要声明</b>：本程序为中医养生科普与体质辨识参考工具，<b>不构成任何医疗诊断、治疗建议或处方</b>。
+      所有茶饮、熏香、食疗、经络建议仅供日常养身参考。孕妇、婴幼儿、慢性病患者、过敏体质及正在服药者，
+      使用任何本草、艾灸、熏香、穴位调理前，务必咨询执业中医师或医师；如有疾病或持续不适，请及时就医。
+    </div>
+  </section>
+
+  <!-- ============ 问诊 ============ -->
+  <section id="view-consult" class="view">
+    <div class="panel">
+      <div class="consult-head">
+        <h2>问诊 · 体质辨识问卷</h2>
+      </div>
+      <p style="font-size:13px;color:var(--ink-soft);margin-top:6px">
+        请根据<b>近一年</b>的实际感受作答，每题选择最符合的程度（1 没有 ~ 5 总是）。</p>
+      <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-text" id="progress-text"></div>
+
+      <div id="question-box"></div>
+
+      <div class="consult-foot">
+        <button id="btn-prev" onclick="prevPage()">‹ 上一页</button>
+        <button id="btn-next" onclick="nextPage()">下一页 ›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 断诊 ============ -->
+  <section id="view-diagnose" class="view">
+    <div class="panel">
+      <div class="consult-head"><h2>断诊 · 体质辨识结果</h2></div>
+      <div id="verdict-box"></div>
+
+      <div class="section-title">九种体质转化分</div>
+      <div class="diag-grid">
+        <div id="radar-box"></div>
+        <div class="score-bars" id="score-bars"></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-soft);margin-top:10px">
+        判定标准：偏颇体质转化分 ≥40「是」、30~39「倾向是」、&lt;30「否」；
+        平和质需 ≥60 且其他体质均较低方判「是」。</p>
+
+      <div class="center-cta">
+        <button class="btn" onclick="prescribe()">查看出诊建议 🌿</button>
+        <button class="btn ghost" onclick="startConsult()">重新问诊</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 出诊 ============ -->
+  <section id="view-prescribe" class="view">
+    <div class="panel">
+      <div class="consult-head"><h2>出诊 · 养身调理建议</h2></div>
+      <p style="font-size:13px;color:var(--ink-soft);margin:6px 0 14px">
+        按辨识出的主要体质给出建议；若有兼夹体质，可切换标签分别查看。</p>
+      <div class="rx-tabs" id="rx-tabs"></div>
+      <div id="rx-body"></div>
+
+      <div class="center-cta no-print">
+        <button class="btn" onclick="printRx()">🖨 打印 / 导出方案</button>
+        <button class="btn ghost" onclick="openAcu()">经络穴位图</button>
+        <button class="btn ghost" onclick="showView('view-diagnose')">‹ 返回断诊</button>
+        <button class="btn ghost" onclick="openHerbs()">本草·香材库</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 经络穴位图 ============ -->
+  <section id="view-acu" class="view">
+    <div class="panel">
+      <div class="consult-head"><h2>经络穴位 · 对症取穴图示</h2></div>
+      <p style="font-size:13px;color:var(--ink-soft);margin:6px 0 12px">
+        「对症取穴」按困扰高亮穴位与手法；「全身总览」为穴位大全一览图。</p>
+      <div class="acu-mode" id="acu-mode"></div>
+      <div class="acu-symptoms" id="acu-symptoms"></div>
+      <div class="acu-layout">
+        <div class="acu-left">
+          <div id="acu-figure"></div>
+          <div id="acu-switch"></div>
+        </div>
+        <div class="acu-right" id="acu-detail"></div>
+      </div>
+      <div id="acu-poster" style="display:none"></div>
+    </div>
+  </section>
+
+  <!-- ============ 二十四节气养生 ============ -->
+  <section id="view-jieqi" class="view">
+    <div class="panel">
+      <div class="consult-head"><h2>二十四节气养生</h2></div>
+      <p style="font-size:13px;color:var(--ink-soft);margin:6px 0 14px">
+        顺时养生，应季而调。下方按四季列出二十四节气，标「今」者为当令节气，点击查看养生要点。</p>
+      <div class="jieqi-grid" id="jieqi-grid"></div>
+      <div class="jieqi-detail" id="jieqi-detail"></div>
+    </div>
+  </section>
+
+  <!-- ============ 本草库 ============ -->
+  <section id="view-herbs" class="view">
+    <div class="panel">
+      <div class="consult-head"><h2>本草 · 香材功效库</h2></div>
+      <div class="herb-toolbar">
+        <input class="herb-search" placeholder="搜索本草名 / 功效，如 安神、玫瑰、祛湿…"
+               oninput="herbSearch(this.value)">
+      </div>
+      <div class="herb-cats" id="herb-cats"></div>
+      <div class="herb-list" id="herb-list"></div>
+    </div>
+  </section>
+
+  <footer>本草·养身 © 养生科普参考工具 · 非医疗用途</footer>
+</div>
+
+<script src="js/questionnaire.js"></script>
+<script src="js/knowledge.js"></script>
+<script src="js/herbs.js"></script>
+<script src="js/acupoints.js"></script>
+<script src="js/jieqi.js"></script>
+<script src="js/app.js"></script>
+<script>
+  /* 注册 Service Worker（仅 https/localhost 生效，file:// 下自动跳过）*/
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>

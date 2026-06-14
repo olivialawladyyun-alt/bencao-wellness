@@ -1,0 +1,16 @@
+{
+  "name": "本草·养身",
+  "short_name": "本草养身",
+  "description": "中医体质辨识 · 中药熏香养生 · 经络穴位 · 二十四节气",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f1e7",
+  "theme_color": "#6a7c52",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
